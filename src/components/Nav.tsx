@@ -40,7 +40,7 @@ const Nav = () => {
         </li>
         <li>
           <Icon name="statistics"/>
-          <Link to="/statistics">Users</Link>
+          <Link to="/statistics">统计页</Link>
         </li>
       </ul>
     </NavWrapper>
