@@ -1,5 +1,5 @@
 import React from 'react';
-import {HashRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom';
+import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import NoMatch from './views/NoMatch';
 import Statistics from './views/Statistics';
 import Money from './views/Money';
