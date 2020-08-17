@@ -1,9 +1,5 @@
 import React from 'react';
-
-require('icons/money.svg');
-require('icons/label.svg');
-require('icons/statistics.svg');
-
+import classnames from 'classnames';
 
 /* require 一个文件夹 */
 let importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
@@ -11,11 +7,12 @@ try {importAll(require.context('icons', true, /\.svg$/));} catch (error) {consol
 
 type Props = {
   name?: string
-}
+} & React.SVGAttributes<SVGElement>
 
 const Icon = (props: Props) => {
+  const {name, children, className, ...rest} = props;
   return (
-    <svg className="icon">
+    <svg className={classnames('icon',className)} {...rest}>
       {props.name && <use xlinkHref={'#' + props.name}/>}
     </svg>
   );
