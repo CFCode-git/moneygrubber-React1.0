@@ -27,9 +27,15 @@ const useTags = () => {
     const tagsClone = JSON.parse(JSON.stringify(tags));
     // 把 tagsClone 的第 index 项删除,换成{id:id,name:obj.name}}
     tagsClone.splice(tagIndex, 1, {id: id, name: obj.name});
-    setTags(tagsClone)
+    setTags(tagsClone);
   };
-  return {tags, setTags, findTag,findTagIndex,updateTag};
+  const deleteTag = (id: number) => {
+    const tagIndex = findTagIndex(id);
+    const tagsClone = JSON.parse(JSON.stringify(tags));
+    tagsClone.splice(tagIndex, 1);
+    setTags(tagsClone);
+  };
+  return {tags, setTags, findTag, findTagIndex, updateTag, deleteTag};
 };
 
 export {useTags};
