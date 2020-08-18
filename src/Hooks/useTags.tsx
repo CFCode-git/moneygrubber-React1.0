@@ -1,10 +1,9 @@
 import {useEffect, useState} from 'react';
 import {createId} from 'lib/createId';
-import {useUpdate} from './Hooks/useUpdate';
+import {useUpdate} from './useUpdate';
 
 const useTags = () => { // 封装一个自定义 Hooks
   const [tags, setTags] = useState<{ id: number; name: string }[]>([]);
-
   /* []表示第一次渲染(组件挂载时执行) afterMounted 的时候执行 */
   useEffect(() => {
     let localTags = JSON.parse(window.localStorage.getItem('tags') || '[]');
@@ -18,11 +17,9 @@ const useTags = () => { // 封装一个自定义 Hooks
     }
     setTags(localTags);
   }, []);
-
   useUpdate(() => {
     window.localStorage.setItem('tags', JSON.stringify(tags));
   }, [tags]);
-
 
   const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
   const findTagIndex = (id: number) => {
@@ -49,6 +46,7 @@ const useTags = () => { // 封装一个自定义 Hooks
       setTags([...tags, {id: createId(), name: tagName}]);
     }
   };
+
   return {tags, setTags, findTag, findTagIndex, updateTag, deleteTag, addTag};
 };
 
