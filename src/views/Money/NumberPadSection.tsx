@@ -28,7 +28,7 @@ const NumberPadSection: React.FunctionComponent<Props> = (props) => {
       if (props.onOk) { props.onOk(); }
       return;
     }
-    if ('0123456789.'.split('').concat(['删除', '清空']).indexOf(text)) {
+    if ('0123456789.'.split('').concat(['删除', '清空']).indexOf(text) >= 0) {
       setOutput(generateOutput(text, output));
     }
   };
