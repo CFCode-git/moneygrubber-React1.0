@@ -46,8 +46,12 @@ const useTags = () => { // 封装一个自定义 Hooks
       setTags([...tags, {id: createId(), name: tagName}]);
     }
   };
+  const getName = (id: number) => {
+    const tag = tags.filter(t => t.id === id)[0];/* find 兼容性不好 */
+    return tag ? tag.name : '';
+  };
 
-  return {tags, setTags, findTag, findTagIndex, updateTag, deleteTag, addTag};
+  return {tags, setTags, findTag, findTagIndex, updateTag, deleteTag, addTag, getName};
 };
 
 export {useTags};
