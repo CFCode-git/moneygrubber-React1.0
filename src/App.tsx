@@ -11,6 +11,8 @@ const AppWrapper = styled.div`
    color:#333;
 `;
 
+console.log('页面刷新了');
+
 function App() {
   return (
     <AppWrapper>
