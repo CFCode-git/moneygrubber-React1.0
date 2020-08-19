@@ -5,11 +5,14 @@ import {useTags} from '../../Hooks/useTags';
 
 const Wrapper = styled.section`
   background:#FFFFFF; padding:12px 16px;
-  flex-grow:1;display: flex;
-  flex-direction:column;
-  justify-content:flex-end;
+  flex-grow:1;
+  flex-shrink: 1;
+  overflow: auto;
+  //justify-content:flex-end; /* 影响滚动条的玩意儿 */
   align-items:flex-start;
-    >ol{ 
+  display: flex;
+  flex-direction:column;
+     >ol{ 
       margin:0 -12px;
       > li { 
         background:#D9D9D9; border-radius:18px; display: inline-block;
@@ -27,11 +30,11 @@ const Wrapper = styled.section`
 
 type Props = {
   value: number[];
-  onChange: (selected:number[]) => void;
+  onChange: (selected: number[]) => void;
 }
 
 const TagsSection: React.FC<Props> = (props) => {
-  const {tags,addTag} = useTags();
+  const {tags, addTag} = useTags();
   const selectedTagIds = props.value;
 
   const onToggleTag = (tagId: number) => {
@@ -48,6 +51,7 @@ const TagsSection: React.FC<Props> = (props) => {
   ;
   return (
     <Wrapper>
+      <button onClick={addTag}>新增标签</button>
       <ol>
         {tags.map(tag =>
           <li key={tag.id}
@@ -58,7 +62,6 @@ const TagsSection: React.FC<Props> = (props) => {
           </li>
         )}
       </ol>
-      <button onClick={addTag}>新增标签</button>
     </Wrapper>
   );
 };
