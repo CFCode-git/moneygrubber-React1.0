@@ -7,9 +7,6 @@ import {useTags} from '../Hooks/useTags';
 import dayjs from 'dayjs';
 // import 'core-js';
 
-const CategoryWrapper = styled.div`
-  background: #FFF;
-`;
 const Item = styled.div`
   display: flex;
   justify-content: space-between;
@@ -39,9 +36,8 @@ function Statistics() {
   const hash: { [K: string]: RecordItem[] } = {}; // 声明一个桶 {'2020-05-11':[item,item],'2020-05-10':[item,item],'2020-05-12':[item,item]}
 
   /* 先分组 */
-  selectedRecords.map(r => {
+  selectedRecords.forEach(r => {
     const key = dayjs(r.createdAt).format('YYYY年MM月DD日');
-    const value = r;
     if (!(key in hash)) {
       hash[key] = [];
     }
