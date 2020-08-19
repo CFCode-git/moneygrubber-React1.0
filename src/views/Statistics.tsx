@@ -35,8 +35,6 @@ function Statistics() {
   const {getName} = useTags();
   const selectedRecords = records.filter(r => r.category === category);
 
-  console.log(selectedRecords);
-
   /* 使用桶排序 */
   const hash: { [K: string]: RecordItem[] } = {}; // 声明一个桶 {'2020-05-11':[item,item],'2020-05-10':[item,item],'2020-05-12':[item,item]}
 
@@ -60,15 +58,12 @@ function Statistics() {
     return 0;
   });
 
-  console.log(array);
-
-
   return (
     <Layout>
       <CategorySection value={category}
                        onChange={value => setCategory(value)}
       />
-      {array.map(([date, records]) => <div>
+      {array.map(([date, records]) => <div key={date}>
           <Header>
             {date}
           </Header>
@@ -81,7 +76,7 @@ function Statistics() {
                     // [span,span,span]
                     // [span, ',' ,span, ',' ,span]
                     .reduce((result, span, index,array) =>
-                      result.concat(index<array.length-1 ? [span, ','] : [span]),
+                      result.concat(index<array.length-1 ? [span, '，'] : [span]),
                       [] as ReactNode[]
                     )}
                 </div>
