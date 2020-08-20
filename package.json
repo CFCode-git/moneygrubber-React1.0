@@ -1,6 +1,7 @@
 {
   "name": "morney-reactapp",
   "version": "0.1.0",
+  "homepage": "https://CFCode-git.github.io/moneygrubber-React-website1.0/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
