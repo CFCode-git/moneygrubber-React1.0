@@ -12,6 +12,7 @@ const Wrapper = styled.section`
   align-items:flex-start;
   display: flex;
   flex-direction:column;
+  &::-webkit-scrollbar{display: none;}
      >ol{ 
       margin:0 -12px;
       > li { 
